@@ -29,3 +29,4 @@ __Memory leaks issues in Android applications and they are most of the time due 
 	* http://android-developers.blogspot.cz/2009/01/avoiding-memory-leaks.html
 
 ###Android Build Process
+-> Read page 30
