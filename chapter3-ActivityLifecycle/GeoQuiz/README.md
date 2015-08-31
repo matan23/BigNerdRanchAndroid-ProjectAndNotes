@@ -26,7 +26,7 @@
 			- seems to be called after onPause _only during rotation_?
 		- limit depends on IPC limit which is quite big but should be kept as minimal: http://stackoverflow.com/questions/9805441/onsaveinstancestate-limit
 	- onCreate
-		- onRestoreInstanceState can be used as well but `_this method is called only when recreating activity after it was killed by the OS_, _There is no reason to override onRestoreInstanceState() unless you are subclassing Activity and it is expected that someone will subclass your subclass._
+		- onRestoreInstanceState can be used as well but `_this method is called only when recreating activity after it was killed by the OS_, _There is no reason to override onRestoreInstanceState() unless you are subclassing Activity and it is expected that someone will subclass your subclass._`
 			- similary to onSaveInstanceState, this should not be confused with activity lifecycle, this method will match onSaveInstanceState call
 
 #Configuration Qualifiers
