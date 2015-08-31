@@ -1,0 +1,34 @@
+#Activity Lifecycle
+- https://guides.codepath.com/android/The-Activity-Lifecycle
+- diff between home, taskmanager, back button
+	- back button kills the activity
+		- the activity get destroyed and thus lose all its state
+	- home button and task manager stops the activity 
+		- popups and anything obscuring an activity will pauses the activity (not the menu panel from the top, what about popup from messages and chats or notifications?)
+		- the activity might stay but this is not garatanteed, if android needs memory it will kill the activity
+- Any runtime configuration changes result in activity recreation
+	- rotation kills and create a fresh activity
+		- why does android kill the activity on rotation?
+		- because it needs to use the specific landscape|portrait layout if needed and it can only do that by calling _setContentView_ which can only happen on the _onCreate_ callback
+	- keyvoard availability
+	- language change
+- Restoring State
+	- bad practice to store custom types into a bundle, only store primitives
+	- onSaveInstanceState: called only when OS unexpectedly kills the activity (not on explicit exit such as back button or Activity.finish())
+		- _need to do the difference between normal activity exit and unexpected acitvity exit_:
+			- `Do not confuse this method with activity lifecycle callbacks`: http://developer.android.com/intl/es/reference/android/app/Activity.html#onSaveInstanceState%28android.os.Bundle%29	
+			- https://guides.codepath.com/android/Handling-Configuration-Changes
+			- http://developer.android.com/intl/es/training/basics/activity-lifecycle/recreating.html
+			- called only in case where activity has not been killed by the user (meaning back button)
+				- orientation changes
+				- there is another activity in front and OS kills ours activity
+		- _need to check what are the cases where onSaveInstanceState is guaranted to be called_
+			- seems to be called after onPause _only during rotation_?
+		- limit depends on IPC limit which is quite big but should be kept as minimal: http://stackoverflow.com/questions/9805441/onsaveinstancestate-limit
+	- onCreate
+		- onRestoreInstanceState can be used as well but `_this method is called only when recreating activity after it was killed by the OS_, _There is no reason to override onRestoreInstanceState() unless you are subclassing Activity and it is expected that someone will subclass your subclass._
+			- similary to onSaveInstanceState, this should not be confused with activity lifecycle, this method will match onSaveInstanceState call
+
+#Configuration Qualifiers
+- list of qualifiers: http://developer.android.com/intl/es/guide/topics/resources/providing-resources.html
+- '-land' suffix as in layout-land tells android studio that these are layout resources for the landscape configuration
