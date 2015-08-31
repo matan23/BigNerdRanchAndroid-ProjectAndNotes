@@ -22,13 +22,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TRUE"
+            android:text="@string/true_btn"
             android:id="@+id/true_btn"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FALSE"
+            android:text="@string/false_btn"
             android:id="@+id/false_btn"/>
     </LinearLayout>
 
