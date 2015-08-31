@@ -14,6 +14,7 @@
 	- language change
 - Restoring State
 	- bad practice to store custom types into a bundle, only store primitives
+	- __do we need explicitly store state onPause? for example when user gets a call will the data of the activity be lost? Or does the activity lost its data only onStop/Destroy? If so will onSaveInstanceState be called?__
 	- onSaveInstanceState: called only when OS unexpectedly kills the activity (not on explicit exit such as back button or Activity.finish())
 		- _need to do the difference between normal activity exit and unexpected acitvity exit_:
 			- `Do not confuse this method with activity lifecycle callbacks`: http://developer.android.com/intl/es/reference/android/app/Activity.html#onSaveInstanceState%28android.os.Bundle%29	
