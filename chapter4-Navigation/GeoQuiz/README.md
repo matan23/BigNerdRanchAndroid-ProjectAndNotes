@@ -11,3 +11,14 @@
 	- requestCode identify an activity which will be used for both startActivity and onActivityResult
 
 ##Backstack
+
+
+##Versions Compability
+- Running code from multiple SDK levels
+	- check for os version before executing newest APIs: Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+	- use linter to check compatibility of apis
+	- if running higher api on lower device the app will crash
+- Setting the correct SDK
+	- CompilerSDK should always be the oldest
+	- TargetSDK should be the latest supported
+	- MinSDK is the lowest version supported
