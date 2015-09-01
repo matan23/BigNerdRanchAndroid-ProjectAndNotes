@@ -1,12 +1,16 @@
 package com.bignerdranch.android.geoquiz;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -77,6 +81,25 @@ public class CheatActivity extends AppCompatActivity {
             mAnswerTv.setText(R.string.true_btn);
         } else {
             mAnswerTv.setText(R.string.false_btn);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int cx = mShowAnswerBtn.getWidth() / 2;
+            int cy = mShowAnswerBtn.getHeight() / 2;
+            float radius = mShowAnswerBtn.getWidth();
+            Animator anim = ViewAnimationUtils.createCircularReveal(mShowAnswerBtn, cx, cy, radius, 0);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    mAnswerTv.setVisibility(View.VISIBLE);
+                    mShowAnswerBtn.setVisibility(View.INVISIBLE);
+                }
+            });
+            anim.start();
+        } else {
+            mAnswerTv.setVisibility(View.VISIBLE);
+            mAnswerTv.setVisibility(View.INVISIBLE);
         }
     }
 
