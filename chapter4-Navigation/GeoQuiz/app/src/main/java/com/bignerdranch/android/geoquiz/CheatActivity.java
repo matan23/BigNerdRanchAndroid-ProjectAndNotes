@@ -28,7 +28,7 @@ public class CheatActivity extends AppCompatActivity {
         return i;
     }
 
-    private void setAnswerShownResult(boolean isAnswerShown) {
+    private void setAnswerShownForActivityResult(boolean isAnswerShown) {
         Intent i = new Intent();
         i.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
         setResult(RESULT_OK, i);
@@ -67,7 +67,7 @@ public class CheatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateAnswer();
-                setAnswerShownResult(true);
+                setAnswerShownForActivityResult(true);
             }
         });
     }
