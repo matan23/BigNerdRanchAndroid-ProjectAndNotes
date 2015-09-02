@@ -1,8 +1,21 @@
 ##Buildconfig
 
 ##What are intents
+	- Communication component that describes an action to be performed
+	- Communicate with the Activity Manager
+	- Broadcast Intent
+	- Communicate with a background Service
+	- What happens when we start an activity via an intent?
+		1. An intent is sent to the activity manager
+		2. The Activity Manager send back the intent to the targeted activity 
+	- Services, Activities etc.. need to be declared in the _Manifest_ this is how the ActivityManager knows the existence of our components
 
-##Explicit  vs implicit intent
+
+##Explicit vs implicit intent
+	- Explicit Intent
+		- Start Component within our application
+	- Implicit Intent
+		- Start Component outside of our application
 
 ##onActivityResult(int requestCode, int resultCode, Intent data) 
 	- used with Activity.setResult()
@@ -11,6 +24,10 @@
 	- requestCode identify an activity which will be used for both startActivity and onActivityResult
 
 ##Backstack
+- ActivityManager manages a stack of running activities
+- Activities for all applications share the same back stack
+	- Thus when pressing back you can end up in a previous app
+	- That is why ActivityManager lives with the OS and not inside our app, because it manages activities of all apps
 
 
 ##Versions Compability
